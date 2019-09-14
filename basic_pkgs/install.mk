@@ -1,18 +1,16 @@
 All: ostree golang conmon runc configurations
 
-install=cd $(1) && ./install.sh
-
 ostree:
-	$(call install $@)
+	./build_packages.sh $@
 
 golang:
-	$(call install $@)
+	./build_packages.sh $@
 
 conmon:
-	$(call install $@)
+	./build_packages.sh $@
 
 runc:
-	$(call install $@)
+	./build_packages.sh $@
 
 configurations:
 	cd $@ && ./configure.sh
