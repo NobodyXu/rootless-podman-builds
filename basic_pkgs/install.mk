@@ -13,6 +13,6 @@ runc:
 	./build_packages.sh $@
 
 configurations:
-	cd $@ && ./configure.sh
+	./build_packages.sh $@
 
 PHONY: All ostree golang conmon runc configurations
