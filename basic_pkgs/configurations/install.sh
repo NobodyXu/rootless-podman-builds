@@ -13,3 +13,6 @@ mkdir -p /etc/containers
 cp registries.conf /etc/containers/registries.conf
 cp policy.json     /etc/containers/policy.json
 cp seccomp.json    /usr/share/containers/seccomp.json
+
+## Enable user namespace
+echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
