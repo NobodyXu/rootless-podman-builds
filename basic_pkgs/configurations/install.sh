@@ -17,6 +17,12 @@ cp seccomp.json    /usr/share/containers/seccomp.json
 ## Enable user namespace
 echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 
+## Check user.max_user_namespaces to see if its is reasonable
+## Especially on RHEL 7 machines.
+if [ `sysctl -n user.max_user_namespaces` -le 1000 ]; then
+	sysctl user.max_user_namespaces=15000
+fi
+
 ## Enable cgroup v2 support
 ## Adapted from:
 ##     https://unix.stackexchange.com/questions/471476/how-do-i-check-cgroup-v2-is-installed-on-my-machine
